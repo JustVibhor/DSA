@@ -16,7 +16,7 @@ public class Arrays {
     }
 
 
-    // brute force solution
+    // Optimal Solution without using extra space
     public void setZeroes(int[][] matrix) {
         int m=matrix.length, n=matrix[0].length;
 
