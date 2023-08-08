@@ -49,7 +49,27 @@ public class Arrays {
     }
 
     // Find First and Last Position of Element in Sorted Array
-    
+    // 1. horrible brute force solution
+
+    public int[] searchRange(int[] nums, int target) {
+        int[] ans = new int[2];
+        List<Integer> list = new ArrayList<>();
+
+        for(int i=0; i<nums.length; i++) {
+            if(nums[i] == target) {
+                list.add(i);
+            }
+        }
+
+        if(list.size() == 0) {
+            return new int[]{-1, -1};
+        }
+        if(list.size() == 1) {
+            return new int[]{list.get(0), list.get(0)};
+        }
+
+        return new int[]{list.get(0), list.get(list.size()-1)};
+    }
 
 
         
