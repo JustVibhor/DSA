@@ -46,6 +46,13 @@ public class Arrays {
                 matrix[i][index] = 0;
             }
         }
+    }
+
+    // Find First and Last Position of Element in Sorted Array
+    
+
+
+        
         
     
 
