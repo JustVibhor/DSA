@@ -71,6 +71,29 @@ public class Arrays {
         return new int[]{list.get(0), list.get(list.size()-1)};
     }
 
+    public int findNumbers(int[] nums) {
+        int count = 0;
+
+        for(int num: nums) {
+            if(checkEvenDigit(num)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public boolean checkEvenDigit(int num) {
+        int count = 0;
+
+        while(num > 0) {
+            num = num/10;
+            count++;
+        }
+
+        return count%2 == 0;
+    }
+
 
         
         
