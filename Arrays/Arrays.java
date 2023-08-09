@@ -71,6 +71,8 @@ public class Arrays {
         return new int[]{list.get(0), list.get(list.size()-1)};
     }
 
+    // 1295. Find Numbers with Even Number of Digits
+
     public int findNumbers(int[] nums) {
         int count = 0;
 
@@ -92,6 +94,27 @@ public class Arrays {
         }
 
         return count%2 == 0;
+    }
+
+    // Optimized Version of the above solution using some previous math wits
+
+    public int OptimizedfindNumbers(int[] nums) {
+        int count = 0;
+
+        for(int num: nums) {
+            if(checkEvenDigit(num)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    boolean OptimizedcheckEvenDigit(int num) {
+        if(num < 0) {
+            num *= -1;
+        }
+        return (int)(Math.log10(num) + 1) % 2 == 0;
     }
 
 
