@@ -118,6 +118,26 @@ public class Arrays {
     }
 
 
+
+
+    public int maximumWealth(int[][] accounts) {
+        int max = 0;
+
+        for(int[] customer: accounts) {
+            int sum = 0;
+            for(int wealth: customer) {
+                sum += wealth;
+            }
+
+            if(max < sum) {
+                max = sum;
+            }
+        }
+
+        return max;
+    }
+
+
         
         
     
