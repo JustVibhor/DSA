@@ -118,8 +118,7 @@ public class Arrays {
     }
 
 
-
-
+    // 1672. Richest Customer Wealth
     public int maximumWealth(int[][] accounts) {
         int max = 0;
 
