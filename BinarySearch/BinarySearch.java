@@ -9,9 +9,8 @@ public class BinarySearch {
         System.out.println(nextGreatestLetter(letters, 'a'));
     }
 
-    static int normalBinarySearch(int[] arr, int target) {
-        int start = 0;
-        int end = arr.length - 1;
+    static int normalBinarySearch(int[] arr, int target, int start, int end) {
+
 
         while(start <= end) {
             int mid = start + (end - start)/2;
@@ -124,6 +123,21 @@ public class BinarySearch {
         }
 
         return ans;
+    }
+
+
+    // position of an element in an infinite sorted array
+    static int infiniteSortedArray(int[] nums, int target) {
+        int start = 0;
+        int end = 1;
+
+        while(nums[end] < target) {
+            int newStart = end + 1;
+            end = end + (end - start + 1) * 2;
+            start = newStart;
+        }
+
+        return normalBinarySearch(nums, target, start, end);
     }
 
 }
