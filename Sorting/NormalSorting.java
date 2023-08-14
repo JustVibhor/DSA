@@ -6,10 +6,11 @@ public class NormalSorting {
 
     public static void main(String[] args) {
         int[] nums = {3, 1, 5, 3, 2};
-        bubbleSort(nums);
+        insertionSort(nums);
         System.out.println(Arrays.toString(nums));
     }
 
+    // compare adjacent elements
     static void bubbleSort(int[] nums) {
         boolean swapped = false;
 
@@ -25,6 +26,43 @@ public class NormalSorting {
                 break;
             }
         }
+    }
+
+    // find max and put it to the last
+    static void selectionSort(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            int lastIndex = nums.length - i - 1;
+            int maxIndex = getMax(nums, 0, lastIndex);
+            System.out.println(maxIndex);
+
+            swap(nums, maxIndex, lastIndex);
+        }
+    }
+
+    // sort in pieces
+    static void insertionSort(int[] nums) {
+        for(int i=0; i<nums.length-1; i++) {
+            for(int j=i+1; j>0; j--) {
+                if(nums[j] < nums[j-1]) {
+                    swap(nums, j, j-1);
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+
+    private static int getMax(int[] nums, int start, int end) {
+        int max = start;
+
+        for (int i = start; i <= end; i++) {
+            if(nums[i] > nums[max]) {
+                max = i;
+            }
+        }
+
+        return max;
+
     }
 
     private static void swap(int[] nums, int j, int i) {
