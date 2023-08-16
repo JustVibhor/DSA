@@ -306,4 +306,47 @@ public class BinarySearch {
         return false;
     }
 
+    // 33. Search in Rotated Sorted Array
+    public int searchInRotatedArray(int[] nums, int target) {
+        int start = 0;
+        int end = nums.length - 1;
+        int peak = findPeakInRotatedArray(nums, start, end);
+        System.out.println(peak);
+        if(peak == -1) {
+            return binarySearch(nums, start, end, target);
+        }
+
+        if(nums[peak] == target) {
+            return peak;
+        }
+
+        if(nums[start] <= target) {
+            return binarySearch(nums, start, peak-1, target);
+        }
+
+
+        return binarySearch(nums, peak+1, end, target);
+    }
+
+    int findPeakInRotatedArray(int[] nums, int start, int end) {
+
+        while(start <= end) {
+            int mid = start + (end - start)/2;
+            if(mid<end && nums[mid] > nums[mid + 1]) {
+                return mid;
+            }
+
+            if(mid>start && nums[mid] < nums[mid - 1]) {
+                return mid - 1;
+            }
+
+            if(nums[start] < nums[mid]) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+        return -1;
+    }
+
 }

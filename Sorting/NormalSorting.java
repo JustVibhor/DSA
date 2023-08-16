@@ -5,8 +5,8 @@ import java.util.Arrays;
 public class NormalSorting {
 
     public static void main(String[] args) {
-        int[] nums = {3, 1, 5, 3, 2};
-        insertionSort(nums);
+        int[] nums = {3, 1, 5, 4, 2};
+        cycleSort(nums);
         System.out.println(Arrays.toString(nums));
     }
 
@@ -48,6 +48,21 @@ public class NormalSorting {
                 } else {
                     break;
                 }
+            }
+        }
+    }
+
+    // cycle sor for 1 -> N, example {5, 3, 1, 2, 4}
+    static void cycleSort(int[] nums) {
+        int i = 0;
+
+        while(i < nums.length) {
+            int correct = nums[i] - 1;
+
+            if(nums[i] != nums[correct]) {
+                swap(nums, i, correct);
+            } else {
+                i++;
             }
         }
     }
