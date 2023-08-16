@@ -15,7 +15,7 @@ public class BinarySearch {
 
 
         while(start <= end) {
-            int mid = start + cd sr(end - start)/2;
+            int mid = start + (end - start)/2;
 
             if(arr[mid] > target) {
                 end = mid - 1;
