@@ -241,7 +241,7 @@ public class BinarySearch {
 
 
     //33. Search in Rotated Sorted Array
-    public int search(int[] nums, int target) {
+    public boolean searchforBS(int[] nums, int target) {
         int start = 0;
         int end = nums.length - 1;
         int peak = peakElement(nums);
@@ -250,7 +250,7 @@ public class BinarySearch {
         }
 
         if(nums[peak] == target) {
-            return peak;
+            return true;
         }
 
         if(target>=nums[start]) {
@@ -307,7 +307,7 @@ public class BinarySearch {
     }
 
     // 33. Search in Rotated Sorted Array
-    public int searchInRotatedArray(int[] nums, int target) {
+    public boolean searchInRotatedArray(int[] nums, int target) {
         int start = 0;
         int end = nums.length - 1;
         int peak = findPeakInRotatedArray(nums, start, end);
@@ -317,7 +317,7 @@ public class BinarySearch {
         }
 
         if(nums[peak] == target) {
-            return peak;
+            return true;
         }
 
         if(nums[start] <= target) {
@@ -344,6 +344,103 @@ public class BinarySearch {
                 start = mid + 1;
             } else {
                 end = mid - 1;
+            }
+        }
+        return -1;
+    }
+
+    // 81. Search in Rotated Sorted Array II
+    // best solution
+    boolean searchForRotatedBS(int[] nums, int target) {
+        int low = 0, high = nums.length - 1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (nums[mid] == target) return true;
+
+            if (nums[low] == nums[mid]) {
+                low++;
+                continue;
+            }
+
+            if (nums[low] <= nums[mid]) {
+                if (nums[low] <= target && target <= nums[mid]) high = mid - 1;
+                else low = mid + 1;
+            } else {
+                if (nums[mid] <= target && target <= nums[high]) low = mid + 1;
+                else high = mid - 1;
+            }
+        }
+        return false;
+    }
+
+
+    // 81. Search in Rotated Sorted Array II
+    boolean search(int[] nums, int target) {
+        int start = 0;
+        int end = nums.length - 1;
+
+        int pivot = findPivot(nums);
+
+        if (pivot == -1 || nums.length <= 1) {
+            return binarySearch(nums, start, end, target);
+        }
+
+        if (nums[pivot] == target) {
+            return true;
+        }
+
+        if (nums[start] <= target && nums[pivot] >= target) {
+            return binarySearch(nums, start, pivot - 1, target);
+        }
+
+        return binarySearch(nums, pivot + 1, end, target);
+    }
+
+    boolean binarySearch(int[] nums, int start, int end, int target) {
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+
+            if (nums[mid] == target) {
+                return true;
+            }
+            if (nums[mid] > target) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+
+        return false;
+    }
+
+    int findPivot(int[] nums) {
+        int start = 0;
+        int end = nums.length - 1;
+
+        while (start < end) {
+            int mid = start + (end - start) / 2;
+
+            if (mid < end && nums[mid] > nums[mid + 1]) {
+                return mid;
+            }
+            if (mid > start && nums[mid] < nums[mid - 1]) {
+                return mid - 1;
+            }
+
+            if (nums[start] == nums[mid] && nums[mid] == nums[end]) {
+                if (nums[start] > nums[start + 1]) {
+                    return start;
+                }
+                start++;
+                if (nums[end] < nums[end - 1]) {
+                    return end - 1;
+                }
+                end--;
+            } else if (nums[mid] <= nums[end]) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
             }
         }
         return -1;
