@@ -1,10 +1,14 @@
 package BinarySearch;
 
+import java.util.Arrays;
+
 public class BinarySearchTwo {
 
     public static void main(String[] args) {
         int[] nums = { 15, 18, 2, 3, 6, 12 };
-        System.out.println(findKthInRotatedArray(nums)+1);
+
+        System.out.println(Arrays.toString());
+//        System.out.println(findKthInRotatedArray(nums)+1);
         }
 
     static int findKthInRotatedArray(int[] nums) {
