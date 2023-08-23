@@ -7,7 +7,7 @@ public class BinarySearchTwo {
     public static void main(String[] args) {
         int[] nums = { 15, 18, 2, 3, 6, 12 };
 
-        System.out.println(Arrays.toString());
+//        System.out.println(Arrays.toString());
 //        System.out.println(findKthInRotatedArray(nums)+1);
         }
 
