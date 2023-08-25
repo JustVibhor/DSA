@@ -4,6 +4,7 @@ public class SplitArrayLargestSum {
 
     public static void main(String[] args) {
         int[] arr = {1, 5, 6, 3, 2};
+        System.out.println(splitArray(arr, 2));
     }
 
     static int splitArray(int[] nums, int k) {
@@ -28,6 +29,12 @@ public class SplitArrayLargestSum {
                 } else {
                     sum += num;
                 }
+            }
+
+            if(pieces <= k) {
+                end = mid;
+            } else {
+                start = mid + 1;
             }
         }
 
