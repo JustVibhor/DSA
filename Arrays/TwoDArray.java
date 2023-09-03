@@ -1,6 +1,11 @@
 package Arrays;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class TwoDArray {
     public static void main(String[] args) {
@@ -11,7 +16,7 @@ public class TwoDArray {
                 {33, 34, 38, 50}
         };
 
-        System.out.println(Arrays.toString(binarySearchIn2DArray(matrix, 37)));
+        System.out.println(Arrays.toString(convert2Dto1D(matrix)));
     }
 
     static int[] binarySearchIn2DArray(int[][] matrix, int target) {
@@ -30,5 +35,16 @@ public class TwoDArray {
         }
 
         return new int[] {-1, -1};
+    }
+
+    static int[] convert2Dto1D(int[][] matrix) {
+//        List<Integer> ans = new ArrayList<Integer>();
+//        for (int i = 0; i < matrix.length; i++) {
+//            for (int j = 0; j < matrix[i].length; j++) {
+//                ans.add(matrix[i][j]);
+//            }
+//        }
+
+        return Arrays.stream(matrix).flatMapToInt(IntStream::of).toArray();
     }
 }
