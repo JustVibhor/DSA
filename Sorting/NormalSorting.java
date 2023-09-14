@@ -1,3 +1,10 @@
+// Stable vs Unsatable Sorting Algo
+// => When original order is maintained algo is a stable sorting algo, else its unstable.
+// Ex: Suppose we have a black ball of number 5 and a red ball of number 5 and in original order black comes before red
+// and after sorting the black ball still comes before red, Then that algo is a stable algo.
+
+
+
 package Sorting;
 
 import java.util.Arrays;
