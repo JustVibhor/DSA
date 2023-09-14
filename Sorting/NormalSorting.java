@@ -19,16 +19,17 @@ public class NormalSorting {
 
     // compare adjacent elements
     static void bubbleSort(int[] nums) {
-        boolean swapped = false;
+        boolean swapped;
 
         for(int i=0; i<nums.length; i++) {
-            for(int j=1; j<nums.length-i; j++) {
-                if(nums[j] < nums[j-1]) {
+            swapped = false;
+            for(int j=1; j<nums.length - i; j++) {
+                if(nums[j] > nums[j-1]) {
                     swap(nums, j, j-1);
                     swapped = true;
                 }
             }
-
+            // if array for particular iteration is not swapped, it got to be sorted damn it
             if(!swapped) {
                 break;
             }
