@@ -12,9 +12,9 @@ import java.util.Arrays;
 public class NormalSorting {
 
     public static void main(String[] args) {
-        int[] nums = {3, 1, 5, 4, 2};
+        int[] nums = {4, 3, 0, 1};
         cycleSort(nums);
-        System.out.println(Arrays.toString(nums));
+//        System.out.println(getMax());
     }
 
     // compare adjacent elements
@@ -67,9 +67,9 @@ public class NormalSorting {
         int i = 0;
 
         while(i < nums.length) {
-            int correct = nums[i] - 1;
+            int correct = nums[i];
 
-            if(nums[i] != nums[correct]) {
+            if(nums[i] < nums.length && nums[i] != nums[correct]) {
                 swap(nums, i, correct);
             } else {
                 i++;
