@@ -7,8 +7,8 @@ import java.util.List;
 
 public class SortingQues {
     public static void main(String[] args) {
-        int[] nums = {4, 2, 3, 1};
-        duplicateNumber(nums);
+        int[] nums = {4, 2, 2, 3, 1};
+        System.out.println(duplicateNumber(nums));
 
     }
 
@@ -58,13 +58,18 @@ public class SortingQues {
         return list;
     }
 
-    public static void duplicateNumber(int[] nums) {
+    public static int duplicateNumber(int[] nums) {
         int[] new_nums = Arrays.copyOf(nums, nums.length);
 
         cycleSort(new_nums);
-
-        System.out.println(Arrays.toString(nums));
         System.out.println(Arrays.toString(new_nums));
+        for (int i = 0; i < new_nums.length; i++) {
+            if(new_nums[i] != i+1) {
+                return new_nums[i];
+            }
+        }
+
+        return -1;
     }
 
 }
