@@ -7,8 +7,8 @@ import java.util.List;
 
 public class SortingQues {
     public static void main(String[] args) {
-        int[] nums = {4, 3, 0, 1};
-        System.out.println(missingNumber(nums));
+        int[] nums = {4, 2, 3, 1};
+        duplicateNumber(nums);
 
     }
 
@@ -19,8 +19,9 @@ public class SortingQues {
         for(int i=0; i<nums.length; i++) {
             if(nums[i] != i) {
                 return i;
-            }
         }
+            }
+
         return nums.length;
 
     }
@@ -29,9 +30,9 @@ public class SortingQues {
         int i=0;
 
         while(i < nums.length) {
-            int correct = nums[i];
+            int correct = nums[i] - 1;
 
-            if(nums[i] < nums.length && nums[i] != nums[correct]) {
+            if(nums[i] != nums[correct]) {
                 int temp = nums[i];
                 nums[i] = nums[correct];
                 nums[correct] = temp;
@@ -55,6 +56,15 @@ public class SortingQues {
         }
 
         return list;
+    }
+
+    public static void duplicateNumber(int[] nums) {
+        int[] new_nums = Arrays.copyOf(nums, nums.length);
+
+        cycleSort(new_nums);
+
+        System.out.println(Arrays.toString(nums));
+        System.out.println(Arrays.toString(new_nums));
     }
 
 }
