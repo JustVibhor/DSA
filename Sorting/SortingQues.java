@@ -72,6 +72,22 @@ public class SortingQues {
         return -1;
     }
 
+    // find all duplicate elements
+
+    public static List<Integer> findDuplicates(int[] nums) {
+        List<Integer> list = new ArrayList<>();
+
+        cycleSort(nums);
+
+        for(int i=0; i<nums.length; i++) {
+            if(nums[i] != i+1) {
+                list.add(nums[i]);
+            }
+        }
+
+        return list;
+    }
+
 }
 
 
