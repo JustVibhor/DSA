@@ -7,8 +7,9 @@ import java.util.List;
 
 public class SortingQues {
     public static void main(String[] args) {
-        int[] nums = {4, 2, 2, 3, 1};
-        System.out.println(duplicateNumber(nums));
+        int[] nums = {3,4,-1,1};
+        cycleSort(nums);
+        System.out.println(Arrays.toString(nums));
 
     }
 
@@ -101,6 +102,21 @@ public class SortingQues {
         }
 
         return ans;
+    }
+
+    // first Missing Positive
+    public static int firstMissingPositive(int[] nums) {
+        cycleSort(nums);
+        if(nums[0] > nums.length) {
+            return 1;
+        }
+        for(int i=0; i<nums.length; i++) {
+            if(nums[i] != i+1) {
+                return i+1;
+            }
+        }
+
+        return nums.length+1;
     }
 
 }
