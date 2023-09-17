@@ -11,6 +11,7 @@ public class SortingQues {
         cycleSort(nums);
         System.out.println(Arrays.toString(nums));
 
+        Boolean bol = new Boolean(true);
     }
 
     // find missing number 0 -> N
