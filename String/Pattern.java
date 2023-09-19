@@ -1,12 +1,15 @@
 package String;
 
+import java.util.Locale;
+
 public class Pattern {
     public static void main(String[] args) {
-        System.out.println(palindrome("aabaaa"));
+        System.out.println(palindrome("aabaA"));
     }
 
     // Palindrome
     public static boolean palindrome(String str) {
+//        str = str.toLowerCase();
         int start = 0;
         int end = str.length() - 1;
 
