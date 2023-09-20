@@ -69,20 +69,13 @@ public class Pattern {
     }
 
     static void pattern4(int n) {
-        for(int i=0; i<2*n; i++) {
+        for(int row=0; row<2*n; row++) {
+            int totalColumns = row > n ? 2*n - row : row ;
 
-            if(i < n) {
-                for(int j=0; j<=i; j++) {
-                    System.out.print(" * ");
-                }
-                System.out.println();
-            } else {
-                for(int j=2*n-i-1; j>0; j--) {
-                    System.out.print(" * ");
-                }
-                System.out.println();
+            for(int col=0; col<totalColumns; col++) {
+                System.out.print(" * ");
             }
-
+            System.out.println();
         }
 
     }
