@@ -5,7 +5,7 @@ import java.util.Locale;
 public class Pattern {
     public static void main(String[] args) {
 //        System.out.println(palindrome("aabaA"));
-        pattern3(5);
+        pattern4(5);
     }
 
     // Palindrome
@@ -68,7 +68,22 @@ public class Pattern {
         }
     }
 
-    static void patter4(int n) {
+    static void pattern4(int n) {
+        for(int i=0; i<2*n; i++) {
+
+            if(i < n) {
+                for(int j=0; j<=i; j++) {
+                    System.out.print(" * ");
+                }
+                System.out.println();
+            } else {
+                for(int j=2*n-i-1; j>0; j--) {
+                    System.out.print(" * ");
+                }
+                System.out.println();
+            }
+
+        }
 
     }
 }
