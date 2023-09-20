@@ -81,25 +81,21 @@ public class Pattern {
     }
 
     static void pattern5(int n) {
-        for(int row=1; row<=2 * n; row++) {
+        for(int row=0; row<2*n; row++) {
+            int totalColumns = row > n ? 2*n - row : row ;
 
-            if(row <= n) {
-                for(int col=n-row; col>0; col--) {
-                    System.out.print(" ");
-                }
-                for(int col=1; col<=row; col++) {
-                    System.out.print("* ");
-                }
-                System.out.println();
-            } else {
-                for(int col=0; col<=row-n; col++) {
-                    System.out.print(" ");
-                }
-                for(int col=2*n - row - 1; col > 0; col--) {
-                    System.out.print("* ");
-                }
-                System.out.println();
+            int noOfSpaces = n - totalColumns;
+
+            for(int col=0; col<noOfSpaces; col++) {
+                System.out.print(" ");
             }
+
+            for(int col=0; col<totalColumns; col++) {
+                System.out.print("* ");
+            }
+            System.out.println();
         }
+
     }
+
 }
