@@ -81,14 +81,25 @@ public class Pattern {
     }
 
     static void pattern5(int n) {
-        for(int row=1; row<=n; row++) {
-            for(int col=n-row; col>0; col--) {
-                System.out.print(" ");
+        for(int row=1; row<=2 * n; row++) {
+
+            if(row <= n) {
+                for(int col=n-row; col>0; col--) {
+                    System.out.print(" ");
+                }
+                for(int col=1; col<=row; col++) {
+                    System.out.print("* ");
+                }
+                System.out.println();
+            } else {
+                for(int col=0; col<=row-n; col++) {
+                    System.out.print(" ");
+                }
+                for(int col=2*n - row - 1; col > 0; col--) {
+                    System.out.print("* ");
+                }
+                System.out.println();
             }
-            for(int col=1; col<=row; col++) {
-                System.out.print("*");
-            }
-            System.out.println();
         }
     }
 }
