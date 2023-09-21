@@ -82,10 +82,10 @@ public class Pattern {
 
     static void pattern5(int n) {
         for(int row=0; row<2*n; row++) {
+
             int totalColumns = row > n ? 2*n - row : row ;
 
             int noOfSpaces = n - totalColumns;
-
             for(int col=0; col<noOfSpaces; col++) {
                 System.out.print(" ");
             }
@@ -95,6 +95,7 @@ public class Pattern {
             }
             System.out.println();
         }
+
 
     }
 
