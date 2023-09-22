@@ -139,7 +139,7 @@ public class Pattern {
     static void pattern8(int n) {
         for(int row=0; row<2*n; row++) {
             for(int col=0; col<2*n; col++) {
-                int c = Math.min(row, Math.min(col, Math.min(2*n-row-1, 2*n-col-1)));
+                int c = Math.max(row, Math.max(col, Math.max(2*n-row-1, 2*n-col-1))) - n+1;
                 System.out.print(c + " ");
             }
             System.out.println();
