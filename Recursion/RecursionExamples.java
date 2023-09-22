@@ -1,5 +1,10 @@
 package Recursion;
 
+// As u have seen how inefficient these recursive programs are
+// why even bother with them?
+// So the complexity issue will be solved by dynamic programming. Period
+
+
 public class RecursionExamples {
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 4, 5, 6, 7};
@@ -26,7 +31,7 @@ public class RecursionExamples {
 
     static int binarySearchRecursion(int[] nums, int start, int end, int target) {
 
-        if(start > nums.length-1 || end < 0) {
+        if(start > end) {
             return -1;
         }
 
