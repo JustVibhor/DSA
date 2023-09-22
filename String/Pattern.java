@@ -5,7 +5,7 @@ import java.util.Locale;
 public class Pattern {
     public static void main(String[] args) {
 //        System.out.println(palindrome("aabaA"));
-        pattern5(5);
+        pattern7(5);
     }
 
     // Palindrome
@@ -25,7 +25,7 @@ public class Pattern {
         return true;
     }
 
-//   *
+    //   *
 //   *  *
 //   *  *  *
 //   *  *  *  *
@@ -40,7 +40,7 @@ public class Pattern {
     }
 
 
-//      *  *  *  *  *
+    //      *  *  *  *  *
 //      *  *  *  *
 //      *  *  *
 //      *  *
@@ -54,7 +54,7 @@ public class Pattern {
         }
     }
 
-// 1
+    // 1
 // 1  2
 // 1  2  3
 // 1  2  3  4
@@ -95,8 +95,45 @@ public class Pattern {
             }
             System.out.println();
         }
+    }
 
+    static void pattern6(int n) {
+        for(int row=1; row<=n; row++) {
+            int noOfSpaces = n - row;
 
+            for(int col=1; col<=noOfSpaces; col++) {
+                System.out.print(" ");
+            }
+
+            int totalCols = 2*row - 1;
+            for(int col=1; col<=totalCols; col++) {
+                int num = row > col ? (row - col) : -1 * (row - col);
+                System.out.print(num+1);
+            }
+            System.out.println();
+        }
+    }
+
+    static void pattern7(int n) {
+        for(int row=0; row<2*n; row++) {
+
+            int c = row > n ? 2*n - row : row;
+
+            int noOfSpaces = n - c;
+
+            for(int col=1; col<=noOfSpaces; col++) {
+                System.out.print(" ");
+            }
+
+            for(int col=c; col>0; col--){
+                System.out.print(col);
+            }
+            for(int col=2; col<=c; col++) {
+                System.out.print(col);
+            }
+            System.out.println();
+
+        }
     }
 
 }
