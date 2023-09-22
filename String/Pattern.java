@@ -5,7 +5,7 @@ import java.util.Locale;
 public class Pattern {
     public static void main(String[] args) {
 //        System.out.println(palindrome("aabaA"));
-        pattern7(5);
+        pattern8(4);
     }
 
     // Palindrome
@@ -117,22 +117,32 @@ public class Pattern {
     static void pattern7(int n) {
         for(int row=0; row<2*n; row++) {
 
-            int c = row > n ? 2*n - row : row;
+            int totalCols = row > n ? 2*n - row : row;
 
-            int noOfSpaces = n - c;
+            int noOfSpaces = n - totalCols;
 
             for(int col=1; col<=noOfSpaces; col++) {
                 System.out.print(" ");
             }
 
-            for(int col=c; col>0; col--){
+            for(int col=totalCols; col>0; col--){
                 System.out.print(col);
             }
-            for(int col=2; col<=c; col++) {
+            for(int col=2; col<=totalCols; col++) {
                 System.out.print(col);
             }
             System.out.println();
 
+        }
+    }
+
+    static void pattern8(int n) {
+        for(int row=0; row<2*n; row++) {
+            for(int col=0; col<2*n; col++) {
+                int c = Math.min(row, Math.min(col, Math.min(2*n-row-1, 2*n-col-1)));
+                System.out.print(c + " ");
+            }
+            System.out.println();
         }
     }
 
