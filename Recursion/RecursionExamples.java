@@ -42,9 +42,8 @@ public class RecursionExamples {
         }
 
         if(nums[mid] > target) {
-            return binarySearchRecursion(nums, 0, mid, target);
-        } else {
-            return binarySearchRecursion(nums, mid+1, nums.length-1, target);
+            return binarySearchRecursion(nums, 0, mid-1, target);
         }
+        return binarySearchRecursion(nums, mid+1, end, target);
     }
 }
