@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Bits {
     public static void main(String[] args) {
-        int[] nums = {2, 3, 4, 1, 2, 1, 3, 6, 4};
+        int[] nums = {2, 3, 4, 1, 2, 1, 3, 6, 4, 6, 9};
         System.out.println(whichElementRepeating(nums));
     }
 
@@ -13,22 +13,11 @@ public class Bits {
     }
 
     static int whichElementRepeating(int[] nums) {
-        int n = nums.length;
-
-        for(int i=0; i<n; i++) {
-            int j;
-
-            for(j=0; j<n; j++) {
-                if(i != j && nums[i] == nums[j]) {
-                    break;
-                }
-            }
-
-            if(j == n) {
-                return nums[i];
-            }
+        int ans = 0;
+        for(int i=0; i<nums.length; i++) {
+            ans ^= nums[i];
         }
-        return -1;
+        return ans;
     }
 
 }
