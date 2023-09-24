@@ -4,8 +4,9 @@ import java.util.Arrays;
 
 public class Bits {
     public static void main(String[] args) {
-        int[] nums = {2, 3, 4, 1, 2, 1, 3, 6, 4, 6, 9};
-        System.out.println(whichElementRepeating(nums));
+//        int[] nums = {2, 3, 4, 1, 2, 1, 3, 6, 4, 6, 9};
+//        System.out.println(whichElementRepeating(nums));
+        System.out.println(findIthBit(15, 2));
     }
 
     static String isEven(int n) {
@@ -14,10 +15,15 @@ public class Bits {
 
     static int whichElementRepeating(int[] nums) {
         int ans = 0;
-        for(int i=0; i<nums.length; i++) {
-            ans ^= nums[i];
+        for (int num : nums) {
+            ans ^= num;
         }
         return ans;
+    }
+
+    static int findIthBit(int n, int i) {
+
+        return (n >> i-1) & 1;
     }
 
 }
