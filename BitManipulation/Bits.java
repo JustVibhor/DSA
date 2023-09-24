@@ -6,7 +6,7 @@ public class Bits {
     public static void main(String[] args) {
         int[] nums = {2, 2, 3, 2, 7, 7, 8, 7, 8, 8};
         int n = findNonRepeatingElement(nums);
-        System.out.println(n);
+        System.out.println(noOfDigitsInBaseb(899, 10));
 
     }
 
@@ -90,6 +90,24 @@ public class Bits {
 
         return ans;
 
+    }
+
+    // find the nth magic number
+    static int nthMagicNumber(int n) {
+        int ans = 0;
+        int base = 1;
+
+        while(n > 0) {
+            ans += (n&1) * base;
+            n = n >> 1;
+            base *= 5;
+        }
+
+        return ans;
+    }
+
+    static int noOfDigitsInBaseb(int n, int base) {
+        return (int)((Math.log(n) / Math.log(base)) + 1);
     }
 
 }
