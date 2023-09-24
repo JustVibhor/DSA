@@ -6,8 +6,8 @@ public class Bits {
     public static void main(String[] args) {
         int[] nums = {2, 2, 3, 2, 7, 7, 8, 7, 8, 8};
         int n = findNonRepeatingElement(nums);
-        System.out.println(covertBinaryToDecimal(n));
-//        System.out.println(covertDecimalToBinary(11));
+        System.out.println(n);
+
     }
 
     private static int covertBinaryToDecimal(int n) {
@@ -76,7 +76,7 @@ public class Bits {
             ans /= 10;
 
         }
-        return real_ans;
+        return covertBinaryToDecimal(real_ans);
     }
 
     static int covertDecimalToBinary(int n) {
