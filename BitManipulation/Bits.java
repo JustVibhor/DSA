@@ -4,10 +4,9 @@ import java.util.Arrays;
 
 public class Bits {
     public static void main(String[] args) {
-        int[] nums = {2, 2, 3, 2, 7, 7, 8, 7, 8, 8};
-        int n = findNonRepeatingElement(nums);
-        System.out.println(Integer.toBinaryString(26));
-        System.out.println(noOfSetBits(26, "BitSubtraction"));
+        int[][] nums = {{1,1,0},{1,0,1},{0,0,0}};
+//        int n = findNonRepeatingElement(nums);
+        System.out.println(Arrays.deepToString(flippingAnImage(nums)));
 
     }
 
@@ -189,5 +188,44 @@ public class Bits {
 
         return -1;
 
+    }
+
+    static int xorOf0Ton(int n) {
+        if(n % 4 == 0) {
+            return n;
+        }
+        if(n % 4 == 1) {
+            return 1;
+        }
+
+        if(n % 4 == 2) {
+            return n+1;
+        }
+
+        if(n % 4 == 3) {
+            return 0;
+        }
+
+        return -1;
+    }
+
+    static int xorFromAtoB(int a, int b) {
+        return xorOf0Ton(b) ^ xorOf0Ton(a - 1);
+    }
+
+    static int[][] flippingAnImage(int[][] image) {
+
+        for(int[] row: image) {
+
+            // horizontal swapping
+            for(int i=0; i<(row.length + 1)/2; i++) {
+                int temp = row[i] ^ 1;
+                row[i] = row[row.length - i - 1] ^ 1;
+                row[row.length - i - 1] = temp;
+            }
+
+        }
+
+        return image;
     }
 }
