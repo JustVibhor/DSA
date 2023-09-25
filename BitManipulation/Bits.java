@@ -6,7 +6,7 @@ public class Bits {
     public static void main(String[] args) {
         int[] nums = {2, 2, 3, 2, 7, 7, 8, 7, 8, 8};
         int n = findNonRepeatingElement(nums);
-        System.out.println(sumOfnthRowinPascalTriangle(4));
+        System.out.println(findPow(2, 5));
 
     }
 
@@ -114,4 +114,47 @@ public class Bits {
         return 1 << n-1;
     }
 
+    static int factorial(int n) {
+        if(n == 0) {
+            return 1;
+        }
+
+        return n * factorial(n-1);
+    }
+
+    static void pascalTriangle(int n) {
+        for (int i=0; i<n; i++) {
+            int spaces = n - i - 1;
+            for (int j=0; j<spaces; j++) {
+                System.out.print(" ");
+            }
+            for(int j=0; j<=i; j++) {
+
+                System.out.print((int)(factorial(i) / (factorial(i - j)*factorial(j))) + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    static boolean isPowerOf2(int n) {
+//        while(n > 0 && (n&1) == 0) {
+//                n = n >> 1;
+//        }
+//
+//        return n == 1;
+        return (n & (n-1)) == 0;
+    }
+
+    static int findPow(int base, int power) {
+        int answer = 1;
+
+        while(power > 0) {
+
+            answer = (power&1) == 1 ? answer*base : answer;
+            power >>= 1;
+            base *= base;
+        }
+
+        return answer;
+    }
 }
