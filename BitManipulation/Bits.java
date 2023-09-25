@@ -6,7 +6,8 @@ public class Bits {
     public static void main(String[] args) {
         int[] nums = {2, 2, 3, 2, 7, 7, 8, 7, 8, 8};
         int n = findNonRepeatingElement(nums);
-        System.out.println(findPow(2, 5));
+        System.out.println(Integer.toBinaryString(26));
+        System.out.println(noOfSetBits(26, "BitSubtraction"));
 
     }
 
@@ -156,5 +157,37 @@ public class Bits {
         }
 
         return answer;
+    }
+
+    static int noOfSetBits(int n, String method) {
+        int count = 0;
+        switch (method) {
+            case  "RightShift": {
+                while(n > 0) {
+                    count = (n & 1) == 1 ? count+1 : count;
+                    n >>= 1;
+                }
+                return count;
+            }
+
+            case "BitSubtraction": {
+                while (n > 0) {
+                    n -= (n & -n);
+                    count++;
+                }
+                return count;
+            }
+
+            case "And": {
+                while(n > 0) {
+                    n &= n-1;
+                    count++;
+                }
+                return count;
+            }
+        }
+
+        return -1;
+
     }
 }
