@@ -6,7 +6,7 @@ public class Bits {
     public static void main(String[] args) {
         int[] nums = {2, 2, 3, 2, 7, 7, 8, 7, 8, 8};
         int n = findNonRepeatingElement(nums);
-        System.out.println(noOfDigitsInBaseb(899, 10));
+        System.out.println(sumOfnthRowinPascalTriangle(4));
 
     }
 
@@ -108,6 +108,10 @@ public class Bits {
 
     static int noOfDigitsInBaseb(int n, int base) {
         return (int)((Math.log(n) / Math.log(base)) + 1);
+    }
+
+    static int sumOfnthRowInPascalTriangle(int n) {
+        return 1 << n-1;
     }
 
 }
