@@ -4,8 +4,7 @@ import java.util.Arrays;
 
 public class Fundamentals {
     public static void main(String[] args) {
-//        sieve(20, new boolean[21]);
-        System.out.println(findSqrt(36));
+        System.out.println(dieHard(3, 4, 5));
     }
 
     static boolean isPrime(int n) {
@@ -40,18 +39,10 @@ public class Fundamentals {
         }
     }
 
-    static int findSqrt(int n) {
-//        for (int i=2; i*i <= n; i++) {
-//            System.out.println(i);
-//            if(i*i == n) {
-//                return i;
-//            }
-//        }
-//        return -1;
-
-        int start = 1;
+    static double findSqrt(int n, int p) {
+        int start = 0;
         int end = n;
-
+        double root = 0.0;
         while (start <= end) {
             int mid = start + (end - start) / 2;
 
@@ -64,6 +55,66 @@ public class Fundamentals {
                 start = mid + 1;
             }
         }
-        return -1;
+        root = (double) end;
+        System.out.println(root);
+        double incr = 0.1;
+        for (int i = 0; i < p; i++) {
+            while (root * root <= n) {
+                root += incr;
+            }
+            root -= incr;
+            incr /= 10;
+        }
+
+        return root;
+    }
+
+    static double newtonRaphsonSQRT(int n) {
+        double x = n;
+        double root;
+        while (true) {
+            root = 0.5 * (x + n / x);
+            if (Math.abs(root - x) < 0.1) {
+                break;
+            }
+            x = root;
+        }
+        return root;
+    }
+
+    static void factors(int n) {
+        for (int i = 1; i * i <= n; i++) {
+            if (n % i == 0) {
+                if (n / i == i) {
+                    System.out.println(i + "    ");
+                } else
+                    System.out.println(i + "    " + n / i);
+            }
+        }
+    }
+
+    static boolean dieHard(int a, int b, int c) {
+
+        if (a + b < c) {
+            return false;
+        }
+
+        if (a == c || b == c || a + b == c) {
+            return false;
+        }
+
+        return c % gcd(a, b) == 0;
+    }
+
+    static int gcd(int a, int b) {
+        System.out.println(a + " " + b);
+        if (a == 0) {
+            return b;
+        }
+        return gcd(b % a, a);
+    }
+
+    static int lcm(int a, int b) {
+        return (a * b) / gcd(a, b);
     }
 }
