@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Fundamentals {
     public static void main(String[] args) {
-        System.out.println(dieHard(3, 4, 5));
+        System.out.println(lcm(4, 8));
     }
 
     static boolean isPrime(int n) {
@@ -107,7 +107,6 @@ public class Fundamentals {
     }
 
     static int gcd(int a, int b) {
-        System.out.println(a + " " + b);
         if (a == 0) {
             return b;
         }
