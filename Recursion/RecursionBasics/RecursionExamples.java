@@ -1,4 +1,4 @@
-package Recursion;
+package Recursion.RecursionBasics;
 
 // As u have seen how inefficient these recursive programs are
 // why even bother with them?
