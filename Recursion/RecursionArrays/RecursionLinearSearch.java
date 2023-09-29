@@ -7,7 +7,9 @@ import static java.util.Arrays.binarySearch;
 
 public class RecursionLinearSearch {
     public static void main(String[] args) {
-        System.out.println(findPeak(new int[]{5, 6, 7, 9, 1, 3}));
+        int[] nums = {4,5,6,7,0,1,2};
+
+        System.out.println(rotatedBSRecursion(nums, 0, 0, nums.length-1));
     }
 
 
@@ -61,6 +63,33 @@ public class RecursionLinearSearch {
         }
 
         return nums[index] == target ? index : helper(nums, target, index + 1);
+    }
+
+    static int rotatedBSRecursion(int[] nums, int target, int start, int end) {
+
+        if(start > end) {
+            return -1;
+        }
+
+        int mid = start + (end - start)/2;
+
+        if(nums[mid] == target) {
+            return mid;
+        }
+
+        if(nums[mid] >= nums[start]) {
+            if(nums[mid] >= target && nums[start] <= target) {
+                return rotatedBSRecursion(nums, target, start, mid-1);
+            } else {
+                return rotatedBSRecursion(nums, target, mid+1, end);
+            }
+        }
+
+        if(nums[mid] <= target && nums[end] >= target) {
+            return rotatedBSRecursion(nums, target, mid+1, end);
+        } else {
+            return rotatedBSRecursion(nums, target, start, mid-1);
+        }
     }
 
     static int rotatedBinarySearch(int[] nums, int target) {
