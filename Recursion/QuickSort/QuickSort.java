@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class QuickSort {
     public static void main(String[] args) {
-        int[] nums = {9, 1, 2, 5, 6};
-        quickSort(nums, 0, nums.length-1);
+        int[] nums = {10, 80, 30, 20, 40, 50, 70};
+        quickSort(nums, 0, nums.length - 1);
         System.out.println(Arrays.toString(nums));
     }
 
@@ -19,9 +19,10 @@ public class QuickSort {
         what its doing?
             Choose any element as pivot
             all elements < pivot will on the lhs and > pivot on rhs of pivot
-            pivot will be at the correct position after each pass
+            will be at the correct position after each pass
 
         How to pick pivot?
+            just take end as pivot
 
      */
 
@@ -32,23 +33,23 @@ public class QuickSort {
      */
 
     public static void quickSort(int[] nums, int low, int high) {
-        if(low >= high) {
+        if (low >= high) {
             return;
         }
 
         int start = low;
         int end = high;
-        int pivot = start + (end - start)/2;
+        int pivot = end;
 
-        while(start <= end) {
+        while (start <= end) {
             while (nums[start] < nums[pivot]) {
                 start++;
             }
-            while(nums[end] > nums[pivot]) {
+            while (nums[end] > nums[pivot]) {
                 end--;
             }
 
-            if(start <= end) {
+            if (start <= end) {
                 int temp = nums[start];
                 nums[start] = nums[end];
                 nums[end] = temp;
