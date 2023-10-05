@@ -8,12 +8,31 @@ public class Basic {
     public static void main(String[] args) {
 
         // System.out.println(skipApple("somethingAppleNothing"));
-        List<String> list = new ArrayList<>();
-        System.out.println(subSetsListBodyAscii("abc", ""));
-        ;
+        System.out.println(subSetsIteration(new int[]{1, 2, 2}));
+
 
     }
 
+    // TC: O(N*2^N)
+    // SC: O(2^N * N)
+    static List<List<Integer>> subSetsIteration(int[] nums) {
+        List<List<Integer>> outer = new ArrayList<>();
+        outer.add(new ArrayList<>());
+
+        for (int num : nums) {
+            int n = outer.size();
+            for (int i = 0; i < n; i++) {
+                // outer.get(i) => inner will be copy of outer.get(i)
+                List<Integer> inner = new ArrayList<>(outer.get(i));
+                inner.add(num);
+                if (!outer.contains(inner)) {
+                    outer.add(inner);
+                }
+            }
+        }
+
+        return outer;
+    }
 
     static void subSets(String str, String ans) {
         if (str.isEmpty()) {
