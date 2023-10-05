@@ -9,7 +9,7 @@ public class Basic {
 
         // System.out.println(skipApple("somethingAppleNothing"));
         List<String> list = new ArrayList<>();
-        System.out.println(subSetsListBody("abc", ""));
+        System.out.println(subSetsListBodyAscii("abc", ""));
         ;
 
     }
@@ -40,13 +40,28 @@ public class Basic {
     static List<String> subSetsListBody(String str, String ans) {
         List<String> list = new ArrayList<>();
 
-        if(str.isEmpty()) {
+        if (str.isEmpty()) {
             list.add(Objects.equals(ans, "") ? "null" : ans);
             return list;
         }
 
-        list.addAll(subSetsListBody(str.substring(1), ans+str.charAt(0)));
+        list.addAll(subSetsListBody(str.substring(1), ans + str.charAt(0)));
         list.addAll(subSetsListBody(str.substring(1), ans));
+
+        return list;
+    }
+
+    static List<String> subSetsListBodyAscii(String str, String ans) {
+        List<String> list = new ArrayList<>();
+
+        if (str.isEmpty()) {
+            list.add(Objects.equals(ans, "") ? "null" : ans);
+            return list;
+        }
+
+        list.addAll(subSetsListBodyAscii(str.substring(1), ans + str.charAt(0)));
+        list.addAll(subSetsListBodyAscii(str.substring(1), ans + " " + (int) str.charAt(0)));
+        list.addAll(subSetsListBodyAscii(str.substring(1), ans));
 
         return list;
     }
