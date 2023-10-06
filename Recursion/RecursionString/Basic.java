@@ -8,7 +8,7 @@ public class Basic {
     public static void main(String[] args) {
 
         // System.out.println(skipApple("somethingAppleNothing"));
-        System.out.println(subSetsIteration(new int[]{1, 2, 2}));
+        System.out.println(subSetsIteration(new int[]{1, 2, 2, 2}));
 
 
     }
@@ -18,16 +18,18 @@ public class Basic {
     static List<List<Integer>> subSetsIteration(int[] nums) {
         List<List<Integer>> outer = new ArrayList<>();
         outer.add(new ArrayList<>());
-
-        for (int num : nums) {
+        int start = 0, end = 0;
+        for (int num = 0; num < nums.length; num++) {
+            start = 0;
+            if (num > 0 && nums[num - 1] == nums[num]) {
+                start = end + 1;
+            }
+            end = outer.size() - 1;
             int n = outer.size();
-            for (int i = 0; i < n; i++) {
-                // outer.get(i) => inner will be copy of outer.get(i)
+            for (int i = start; i < n; i++) {
                 List<Integer> inner = new ArrayList<>(outer.get(i));
-                inner.add(num);
-                if (!outer.contains(inner)) {
-                    outer.add(inner);
-                }
+                inner.add(nums[num]);
+                outer.add(inner);
             }
         }
 
