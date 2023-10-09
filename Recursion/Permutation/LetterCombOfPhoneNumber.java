@@ -19,8 +19,8 @@ public class LetterCombOfPhoneNumber {
 
         String letters = phoneBook[up.charAt(0) - '2'];
 
-        for(char letter: letters.toCharArray()) {
-            list.addAll(letter(p+letter, up.substring(1), phoneBook));
+        for (char letter : letters.toCharArray()) {
+            list.addAll(letter(p + letter, up.substring(1), phoneBook));
         }
 
 
