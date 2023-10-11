@@ -1,42 +1,65 @@
 package Recursion.BackTracking;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class NQueens {
     public static void main(String[] args) {
         boolean[][] board = new boolean[4][4];
-        nQueens(board, 0, "");
+        System.out.println(countQueens(board, 0));
     }
 
-    static void nQueens(boolean[][] board, int row, String p) {
+
+    static int countQueens(boolean[][] board, int row) {
+        int count = 0;
+        if(row == board.length) {
+            return 1;
+        }
+
+        for(int c=0; c<board[0].length; c++) {
+            if(!checkQueen(board, row, c)) {
+                board[row][c] = true;
+                count += countQueens(board, row+1);
+                board[row][c] = false;
+            }
+        }
+        return count;
+    }
+
+    static List<List<String>> nQueens(boolean[][] board, int row, String p) {
+        List<List<String>> list = new ArrayList<>();
         if (row == board.length) {
-            display(board);
-            System.out.println();
-            return;
+            list.add(display(board));
+            return list;
         }
 
         for (int c = 0; c < board[0].length; c++) {
             if (!checkQueen(board, row, c)) {
                 board[row][c] = true;
-                nQueens(board, row + 1, p + "Q");
+                list.addAll(nQueens(board, row + 1, p + "Q"));
                 board[row][c] = false;
             }
         }
 
+        return list;
 
     }
 
-    private static void display(boolean[][] board) {
+    private static List<String> display(boolean[][] board) {
+        List<String> ans = new ArrayList<>();
         for (boolean[] arr : board) {
+            StringBuilder temp = new StringBuilder();
             for (boolean elem : arr) {
                 if (elem) {
-                    System.out.print("Q ");
+                    temp.append("Q");
                 } else {
-                    System.out.print("X ");
+                    temp.append(".");
                 }
             }
-            System.out.println();
+            ans.add(String.valueOf(temp));
         }
+        return ans;
     }
 
     private static boolean checkQueen(boolean[][] board, int row, int col) {
