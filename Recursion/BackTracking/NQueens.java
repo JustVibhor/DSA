@@ -7,8 +7,8 @@ import java.util.List;
 public class NQueens {
     public static void main(String[] args) {
         boolean[][] board = new boolean[4][4];
-        System.out.println(countQueens(board, 0));
-    }
+        System.out.println(nQueens(board, 0, ""));
+        }
 
 
     static int countQueens(boolean[][] board, int row) {
