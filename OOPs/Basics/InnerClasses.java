@@ -1,4 +1,4 @@
-package OOPs;
+package OOPs.Basics;
 
 public class InnerClasses {
     static class Test {

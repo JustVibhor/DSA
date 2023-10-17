@@ -1,4 +1,4 @@
-package OOPs;
+package OOPs.Basics;
 
 public class Basics {
     public static void main(String[] args) {

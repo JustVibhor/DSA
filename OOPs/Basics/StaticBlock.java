@@ -1,4 +1,4 @@
-package OOPs;
+package OOPs.Basics;
 
 public class StaticBlock {
     static int a = 5;
