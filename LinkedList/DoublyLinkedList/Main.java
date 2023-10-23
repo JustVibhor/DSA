@@ -4,10 +4,14 @@ public class Main {
     public static void main(String[] args) {
         DLL<Integer> list = new DLL<>();
 
-        for(int i=0; i<5; i++) {
-            list.add(i+1);
-        }
+        list.add(8);
+        list.add(2);
+        list.add(5);
+        list.add(7);
+
         list.display();
-        list.displayReverse();
+        list.addAtIndex(23, 1);
+        list.display();
+
     }
 }
