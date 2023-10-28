@@ -161,7 +161,6 @@ public class LL {
         }
 
         tail.next = f != null ? f : s;
-        tail.next = f != null ? f : s;
 
         return tail;
 
@@ -256,7 +255,7 @@ public class LL {
         Node midPrev = null;
 
         while (node != null && node.next != null) {
-            midPrev = (midPrev == null) ? head : midPrev.next;
+            midPrev = (midPrev == null) ? node : midPrev.next;
             node = node.next.next;
         }
         Node mid = midPrev.next;

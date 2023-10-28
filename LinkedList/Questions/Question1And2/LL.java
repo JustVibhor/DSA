@@ -3,7 +3,10 @@ package LinkedList.Questions.Question1And2;
 //Q1 Recursive insertion of LinkedList
 //Q2 Remove Duplicates from Sorted List
 //Q3 Merge Two Sorted Lists
-
+//Q4 Reverse LinkedList
+//Q5 Reverse LinkedList 2
+//Q6 Palindrome Linked List
+//Q7 Reorder Linked List
 public class LL<T> {
 
     private Node head;
@@ -180,8 +183,138 @@ public class LL<T> {
         System.out.println("END");
     }
 
-    private static void main(String[] args) {
 
+    private void reverse(Node node) {
+        if (node == tail) {
+            head = tail;
+            return;
+        }
+
+        reverse(node.next);
+
+        tail.next = node;
+        tail = node;
+        tail.next = null;
+    }
+
+    // Q-4
+    Node inPlaceReversal(Node head) {
+        Node prev = null;
+        Node pres = head;
+        Node future = pres.next;
+
+        while (pres != null) {
+            pres.next = prev;
+            prev = pres;
+            pres = future;
+            if (future != null) {
+                future = future.next;
+            }
+        }
+
+        return prev;
+    }
+
+    // Q-5
+    Node revereBetween(Node head, int left, int right) {
+        if (left == right) {
+            return head;
+        }
+
+        Node prev = null;
+        Node current = head;
+
+        for (int i = 0; current != null && i < left - 1; i++) {
+            prev = current;
+            current = current.next;
+        }
+
+        Node last = prev;
+        Node newEnd = current;
+        Node future = current.next;
+
+        for (int i = 0; current != null && i < right - left + 1; i++) {
+            current.next = prev;
+            prev = current;
+            current = future;
+            if (future != null) {
+                future = future.next;
+            }
+        }
+
+        if(last != null) {
+            last.next = prev;
+        } else {
+            head = prev;
+        }
+
+        newEnd.next = current;
+
+        return head;
+    }
+
+    // Q-6
+    public boolean palindrome(Node head) {
+        Node mid = getMid(head);
+        Node left = head;
+        Node right = inPlaceReversal(mid);
+
+        while(left != null && right != null) {
+
+            if(left.value != right.value) {
+                return false;
+            }
+
+            left = left.next;
+            right = right.next;
+        }
+
+        return true;
+    }
+
+    // Q-7
+    public void reorderList(Node head) {
+        Node s = head;
+        Node e = inPlaceReversal(getMid(head));
+        Node ans = new Node();
+        Node temp = ans;
+
+        int count = 0;
+
+        while(s != null && e != null) {
+            if(count % 2 == 0) {
+                temp.next = s;
+                s = s.next;
+            } else {
+                temp.next = e;
+                e = e.next;
+            }
+            temp = temp.next;
+            count++;
+        }
+        head = ans;
+    }
+
+    public Node getMid(Node head) {
+        Node s = head;
+        Node f = head;
+
+        while(f != null && f.next != null) {
+            s = s.next;
+            f = f.next.next;
+        }
+
+        return s;
+    }
+
+    public static void main(String[] args) {
+        LL<Integer> list = new LL<>();
+        for (int i = 1; i < 6; i++) {
+            list.addLast(i);
+        }
+        list.display();
+        list.reverse(list.head);
+        list.display();
     }
 
     private class Node {
@@ -195,6 +328,10 @@ public class LL<T> {
         public Node(T value, Node next) {
             this.value = value;
             this.next = next;
+        }
+
+        public Node() {
+
         }
     }
 }
