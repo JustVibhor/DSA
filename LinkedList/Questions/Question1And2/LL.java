@@ -7,6 +7,9 @@ package LinkedList.Questions.Question1And2;
 //Q5 Reverse LinkedList 2
 //Q6 Palindrome Linked List
 //Q7 Reorder Linked List
+//Q8 Reverse K-Nodes in Linked List
+//Q9 Reverse alternate k nodes in Linked List
+//Q10 Rotate List
 public class LL<T> {
 
     private Node head;
@@ -305,6 +308,128 @@ public class LL<T> {
         }
 
         return s;
+    }
+
+    // Q8
+    public Node reverseKgroup(Node head, int k) {
+        if(k <= 1 || head == null) {
+            return head;
+        }
+
+        Node curr = head;
+        Node prev = null;
+        int length=0;
+
+        while (curr != null && length != size-size%k) {
+            Node last = prev;
+            Node newEnd = curr;
+
+            Node future = curr.next;
+
+            for(int i=0; i<k; i++) {
+                curr.next = prev;
+                prev = curr;
+                curr = future;
+
+                if(future != null) {
+                    future = future.next;
+                }
+                length++;
+            }
+
+            if(last != null) {
+                last.next = prev;
+            } else {
+                head = prev;
+            }
+
+            newEnd.next = curr;
+            prev = newEnd;
+        }
+
+        return head;
+    }
+
+    // Q-9
+    public Node reverseAlternateKnodes(Node head, int k) {
+        if(k <= 1 || head == null) {
+            return head;
+        }
+
+        Node prev = null;
+        Node curr = head;
+        int l = 0;
+
+        while(curr != null && l != size - size%k) {
+            Node last = prev;
+            Node newEnd = curr;
+
+            Node future = curr.next;
+
+            for(int i=0; curr!=null && i<k; i++) {
+                curr.next = prev;
+                prev = curr;
+                curr = future;
+
+                if(future != null) {
+                    future = future.next;
+                }
+                l++;
+            }
+
+            if(last != null) {
+                last.next = prev;
+            } else {
+                head = prev;
+            }
+
+            newEnd.next = curr;
+            prev = newEnd;
+
+            for (int i=0; curr != null && i<k; i++) {
+                prev = curr;
+                curr = curr.next;
+                l++;
+            }
+        }
+
+        return head;
+    }
+
+
+    // Q-10
+    public Node rotateList(Node head, int k) {
+        if(k <= 1 || head == null || head.next == null) {
+            return head;
+        }
+
+        int length = 1;
+        Node last = head;
+
+        while (last.next != null) {
+            last = last.next;
+            length++;
+        }
+
+//        connect the tail with the head
+        last.next = head;
+
+        int rotation = k % length;
+        int skip = length - rotation;
+
+        Node newStart = head;
+
+        for (int i=0; i<skip-1; i++) {
+            newStart = newStart.next;
+        }
+
+        // make the element the new head
+        head = newStart.next;
+
+        // break the circular chain
+        newStart.next = null;
+
+        return head;
     }
 
     public static void main(String[] args) {
