@@ -1,8 +1,8 @@
-package BinaryTrees;
+package Tree.AVL;
 
-public class CustomBinarySearchTree {
+public class AVL {
 
-    public CustomBinarySearchTree() {
+    public AVL() {
 
     }
 
@@ -24,6 +24,9 @@ public class CustomBinarySearchTree {
 
     private Node root;
 
+    public int height() {
+        return root.height;
+    }
 
     public int height(Node node) {
         if (node == null) {
@@ -54,7 +57,64 @@ public class CustomBinarySearchTree {
 
         node.height = Math.max(height(node.left), height(node.right)) + 1;
 
+        return rotate(node);
+    }
+
+    private Node rotate(Node node) {
+        if (height(node.left) - height(node.right) > 1) {
+            // left heavy
+            if (height(node.left.left) - height(node.left.right) > 0) {
+                // left-left case
+                return rightRotate(node);
+            }
+
+            if (height(node.left.left) - height(node.left.right) < 0) {
+                // left-right case
+                node.left = leftRotate(node.left);
+                return rightRotate(node);
+            }
+        }
+
+        if (height(node.left) - height(node.right) < -1) {
+            // right heave
+            if (height(node.right.right) - height(node.right.left) > 0) {
+                // right-right case
+                return leftRotate(node);
+            }
+
+            if (height(node.right.right) - height(node.right.left) > 0) {
+                // right-left case
+                node.right = rightRotate(node.right);
+                return leftRotate(node);
+            }
+        }
+
         return node;
+    }
+
+    private Node leftRotate(Node p) {
+        Node c = p.right;
+        Node t = c.left;
+
+        p.right = t;
+        c.left = p;
+
+        p.height = Math.max(height(p.left), height(p.right)) + 1;
+        c.height = Math.max(height(c.left), height(c.right)) + 1;
+        return c;
+    }
+
+    private Node rightRotate(Node p) {
+        Node c = p.left;
+        Node t = c.right;
+
+        p.left = t;
+        c.right = p;
+
+        p.height = Math.max(height(p.left), height(p.right)) + 1;
+        c.height = Math.max(height(c.left), height(c.right)) + 1;
+
+        return c;
     }
 
     public void populate(int[] nums) {
